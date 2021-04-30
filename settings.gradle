@@ -1,0 +1,4 @@
+rootProject.name = 'JPA-Study'
+include 'jpa-ex1'
+include 'jpashop'
+
