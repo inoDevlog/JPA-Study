@@ -4,9 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
+
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
@@ -16,17 +16,31 @@ public class JpaMain {
         tx.begin();
 
         try {
-            // Member findMember = em.find(Member.class, 1L);
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(5)
-                    .setMaxResults(8)
-                    .getResultList();
 
-            for (Member member : result) {
-                System.out.println("member.name = " + member.getName());
-            }
+            Member member = new Member();
+            member.setId(3L);
+            member.setUsername("C");
+            member.setRoleType(RoleType.ADMIN);
 
-            tx.commit();
+            em.persist(member);
+
+//            Member member1 = new Member(150L, "A");
+            //영속
+//            Member member = em.find(Member.class, 150L);
+//            member.setName("AAAAA"); // 값만 바꾸는게 맞다.
+
+            //준영속상태
+//            em.detach(member);
+
+//            Member member = new Member(200L, "member2000");
+//            em.persist(member);
+
+//            em.flush();
+//            System.out.println("====================");
+//            em.remove(member);
+//            em.persist(member);
+//            System.out.println("==================");
+            tx.commit(); // 커밋하는 시점에 DB로 날아간다.
         } catch (Exception e) {
             tx.rollback();
         } finally {
