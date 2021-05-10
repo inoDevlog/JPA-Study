@@ -11,13 +11,14 @@ public class OrderItem {
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
-    @Column(name = "MEMBER_ID")
-    private Long memberId;
+    @Column(name = "ORDER_ID")
+    private Long orderId;
 
-    private LocalDateTime orderDAte;
+    @Column(name = "ITEM_ID")
+    private Long itemId;
 
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private int orderPrice;
+    private int count;
 
     public Long getId() {
         return id;
@@ -27,27 +28,35 @@ public class OrderItem {
         this.id = id;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
-    public LocalDateTime getOrderDAte() {
-        return orderDAte;
+    public Long getItemId() {
+        return itemId;
     }
 
-    public void setOrderDAte(LocalDateTime orderDAte) {
-        this.orderDAte = orderDAte;
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
     }
 
-    public OrderStatus getStatus() {
-        return status;
+    public int getOrderPrice() {
+        return orderPrice;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    public void setOrderPrice(int orderPrice) {
+        this.orderPrice = orderPrice;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
