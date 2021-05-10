@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ORDERS")
-public class Order{
+public class Order {
 
     @Id
     @GeneratedValue
@@ -15,7 +15,7 @@ public class Order{
     @Column(name = "MEMBER_ID")
     private Long memberId;
 
-    private LocalDateTime orderDate;
+    private LocalDateTime orderDate; //ORDER_DATE, order_date
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
