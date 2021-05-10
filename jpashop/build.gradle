@@ -1,6 +1,6 @@
 group 'com.jpa-study'
-version '1.0-SNAPSHOT'
-compileJava {}.options.encoding("UTF-8")
+version '1.0.0'
+// compileJava {}.options.encoding("UTF-8")
 
 repositories {
     mavenCentral()
