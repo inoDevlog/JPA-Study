@@ -7,14 +7,18 @@ import java.util.List;
 @Entity
 public class Team {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "TEAM_ID")
     private Long id;
     private String name;
 
     @OneToMany(mappedBy = "team") // 나는 이 팀으로 매핑이 되어 있는 애야
     private List<Member> members = new ArrayList<>();
+
+    public void addMember(Member member) {
+        member.setTeam(this);
+        members.add(member);
+    }
 
     public Long getId() {
         return id;
