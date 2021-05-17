@@ -1,5 +1,7 @@
 package jpastudy.jpashop;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import jpastudy.jpashop.domain.Book;
 import jpastudy.jpashop.domain.Member;
 import jpastudy.jpashop.domain.Order;
 import jpastudy.jpashop.domain.OrderItem;
@@ -22,14 +24,11 @@ public class JpaMain {
 
         try {
 
-            Order order = new Order();
-            em.persist(order);
-//            order.addOrderItem(new OrderItem());
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
 
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-
-            em.persist(orderItem);
+            em.persist(book);
 
             tx.commit();
         } catch (Exception e) {
