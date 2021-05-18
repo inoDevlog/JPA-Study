@@ -21,14 +21,16 @@ public class JpaMain {
         try {
 
             Member member = new Member();
-            member.setUsername("user1");
-            member.setCreateBy("kim");
-            member.setCreateDate(LocalDateTime.now());
-
+            member.setUsername("hello");
+            
             em.persist(member);
 
             em.flush();
             em.clear();
+
+            Member findMember = em.find(Member.class, member.getId());
+            System.out.println("findMember.getId() = " + findMember.getId());
+            System.out.println("findMember.getUsername() = " + findMember.getUsername());
 
             tx.commit(); // 커밋하는 시점에 DB로 날아간다.
         } catch (Exception e) {
