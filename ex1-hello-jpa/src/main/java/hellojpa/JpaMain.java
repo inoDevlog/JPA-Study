@@ -1,5 +1,7 @@
 package hellojpa;
 
+import org.hibernate.Hibernate;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -15,22 +17,29 @@ public class JpaMain {
 
         EntityManager em = emf.createEntityManager();
 
-        EntityTransaction tx = em.getTransaction ();
+        EntityTransaction tx = em.getTransaction();
         tx.begin();
 
         try {
-
             Member member = new Member();
             member.setUsername("hello");
-            
             em.persist(member);
 
             em.flush();
             em.clear();
 
-            Member findMember = em.find(Member.class, member.getId());
-            System.out.println("findMember.getId() = " + findMember.getId());
-            System.out.println("findMember.getUsername() = " + findMember.getUsername());
+//            Member findMember = em.find(Member.class, member.getId());
+            Member refMember = em.getReference(Member.class, member.getId());
+            System.out.println("refMember.getClass() = " + refMember.getClass());
+            System.out.println("refMember = " + emf.getPersistenceUnitUtil().isLoaded(refMember));
+            refMember.getUsername(); // 강제 호출
+            Hibernate.initialize(refMember);
+//            Member findMember = em.getReference(Member.class, member.getId());
+//            System.out.println("findMember.getClass() = " + findMember.getClass());
+//            System.out.println("findMember.getId() = " + findMember.getId());
+//            System.out.println("findMember.getUsername() = " + findMember.getUsername());
+
+
 
             tx.commit(); // 커밋하는 시점에 DB로 날아간다.
         } catch (Exception e) {
