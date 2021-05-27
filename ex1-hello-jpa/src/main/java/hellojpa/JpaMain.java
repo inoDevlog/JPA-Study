@@ -21,25 +21,21 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member = new Member();
-            member.setUsername("hello");
-            em.persist(member);
+
+            Child child1 = new Child();
+            Child child2 = new Child();
+
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+            em.persist(parent);
 
             em.flush();
             em.clear();
 
-//            Member findMember = em.find(Member.class, member.getId());
-            Member refMember = em.getReference(Member.class, member.getId());
-            System.out.println("refMember.getClass() = " + refMember.getClass());
-            System.out.println("refMember = " + emf.getPersistenceUnitUtil().isLoaded(refMember));
-            refMember.getUsername(); // 강제 호출
-            Hibernate.initialize(refMember);
-//            Member findMember = em.getReference(Member.class, member.getId());
-//            System.out.println("findMember.getClass() = " + findMember.getClass());
-//            System.out.println("findMember.getId() = " + findMember.getId());
-//            System.out.println("findMember.getUsername() = " + findMember.getUsername());
-
-
+            Parent findParent = em.find(Parent.class, parent.getId());
+            findParent.getChildList().remove(0);
 
             tx.commit(); // 커밋하는 시점에 DB로 날아간다.
         } catch (Exception e) {
