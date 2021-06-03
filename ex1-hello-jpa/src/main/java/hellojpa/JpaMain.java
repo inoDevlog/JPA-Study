@@ -14,27 +14,25 @@ public class JpaMain {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
-
         EntityManager em = emf.createEntityManager();
-
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
         try {
 
-            Address address = new Address("city", "street", "10000");
-
             Member member = new Member();
             member.setUsername("member1");
-            member.setHomeAddress(address);
+            member.setHomeAddress(new Address("homeCity", "street", "10000"));
+
+            member.getFavoriteFoods().add("chicken");
+            member.getFavoriteFoods().add("pizza");
+
+            member.getAddressHistory().add(new Address("old1", "street", "20000"));
+            member.getAddressHistory().add(new Address("old2", "street", "20000"));
+
             em.persist(member);
 
-            Address newAddress = new Address("NewCity", address.getStreet(), address.getZipcode());
-            member.setHomeAddress(newAddress);
-
-//            member.getHomeAddress().setCity("newCity");
-
-            tx.commit(); // 커밋하는 시점에 DB로 날아간다.
+            tx.commit();
         } catch (Exception e) {
             tx.rollback();
         } finally {
