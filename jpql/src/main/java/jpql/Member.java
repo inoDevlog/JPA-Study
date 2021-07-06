@@ -16,6 +16,10 @@ import javax.persistence.*;
  * @since 2021/06/27
  */
 @Entity
+@NamedQuery(
+        name = "Member.findByUserName",
+        query = "select m from Member m where m.username = :username"
+)
 public class Member {
 
     @Id

@@ -53,20 +53,37 @@ public class JpaMain {
             em.flush();
             em.clear();
 
-            String query = "select distinct t From Team t join fetch t.members";
+            // flush
+            int resultCount = em.createQuery("update Member m set m.age = 20")
+                    .executeUpdate();
 
-            List<Team> result = em.createQuery(query, Team.class)
-                    .getResultList();
+            System.out.println("resultCount = " + resultCount);
 
-            System.out.println("result = " + result.size());
+//            List<Member> resultList = em.createNamedQuery("Member.findByUserName", Member.class)
+//                    .setParameter("username", "회원1")
+//                    .getResultList();
+//
+//            for (Member member : resultList) {
+//                System.out.println("member = " + member);
+//            }
 
-            for (Team team : result) {
-                System.out.println("team. = " + team.getName() + "|members = " + team.getMembers());
-                for (Member member : team.getMembers()) {
-                    System.out.println("-> member = " + member);
-                }
-            }
 
+//            String query = "select m From Member m where m = :member";
+//
+//            List<Member> findMember = em.createQuery(query, Member.class)
+//                    .setParameter("member", member1)
+//                    .getResultList();
+//
+//            System.out.println("findMember = " + findMember);
+
+//            System.out.println("result = " + result.size());
+//
+//            for (Team team : result) {
+//                System.out.println("team. = " + team.getName() + "|members = " + team.getMembers());
+//                for (Member member : team.getMembers()) {
+//                    System.out.println("-> member = " + member);
+//                }
+//            }
 
             tx.commit();
         } catch (
