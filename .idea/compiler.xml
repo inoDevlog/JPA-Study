@@ -11,6 +11,13 @@
         <module name="JPA-Study.JPA-Shop.main" />
         <module name="JPA-Study.jpashop.main" />
       </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jpql" />
+        <module name="ex1-hello-jpa" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />
   </component>
