@@ -3,6 +3,8 @@ package hellojpa;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 public class MemberProduct {
 
@@ -10,11 +12,11 @@ public class MemberProduct {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
@@ -22,4 +24,7 @@ public class MemberProduct {
     private int price;
 
     private LocalDateTime orderDateTime;
+
+    public MemberProduct() {
+    }
 }

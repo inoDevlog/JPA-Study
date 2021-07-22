@@ -6,6 +6,8 @@ package jpql;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 /**
  * <b>클래스 제목(작업목적)</b>
  * <p>
@@ -28,7 +30,7 @@ public class Member {
     private String username;
     private int age;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 

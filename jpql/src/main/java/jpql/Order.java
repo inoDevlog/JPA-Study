@@ -6,6 +6,8 @@ package jpql;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 /**
  * <b>클래스 제목(작업목적)</b>
  * <p>
@@ -27,7 +29,7 @@ public class Order {
     @Embedded
     private Address address;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 

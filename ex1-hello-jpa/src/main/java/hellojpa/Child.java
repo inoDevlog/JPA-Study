@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 public class Child {
 
     @Id
@@ -16,7 +18,7 @@ public class Child {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "parent_id")
     private Parent parent;
 

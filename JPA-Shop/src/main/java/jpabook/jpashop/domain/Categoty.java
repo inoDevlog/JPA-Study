@@ -12,6 +12,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 /**
  * <b>클래스 제목(작업목적)</b>
  * <p>
@@ -38,11 +40,17 @@ public class Categoty {
             inverseJoinColumns = @JoinColumn(name = "item_id"))
     private List<Item> items = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "parent_id")
     private Categoty parent;
 
     @OneToMany(mappedBy = "parent")
     private List<Categoty> child = new ArrayList<>();
+
+    //==연관관계 메서드==
+    public void addChildCategory(Categoty child) {
+        this.child.add(child);
+        child.setParent(this);
+    }
 
 }
