@@ -4,3 +4,7 @@ jpabook/jpashop/MemberRepositoryTest.java
  jpabook.jpashop.MemberRepositoryTest
 jpabook/jpashop/service/MemberServiceTest.java
  jpabook.jpashop.service.MemberServiceTest
+jpabook/jpashop/service/ItemServiceTest.java
+ jpabook.jpashop.service.ItemServiceTest
+jpabook/jpashop/service/OrderServiceTest.java
+ jpabook.jpashop.service.OrderServiceTest

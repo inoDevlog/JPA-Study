@@ -98,6 +98,13 @@ public class OrderServiceTest {
         assertEquals("주문이 취소된 상품은 그만큼 재고가 증가해야 한다.", 10, item.getStockQuantity());
     }
 
+    private Member createMember() {
+        Member member = new Member();
+        member.setName("회원1");
+        member.setAddress(new Address("서울", "강가", "123-123"));
+        em.persist(member);
+        return member;
+    }
 
     private Book createBook(String name, int price, int stockQuantity) {
         Book book = new Book();
@@ -107,13 +114,4 @@ public class OrderServiceTest {
         em.persist(book);
         return book;
     }
-
-    private Member createMember() {
-        Member member = new Member();
-        member.setName("회원1");
-        member.setAddress(new Address("서울", "강가", "123-123"));
-        em.persist(member);
-        return member;
-    }
-
 }
