@@ -4,6 +4,7 @@
 
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,15 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * <b>클래스 제목(작업목적)</b>
- * <p>
- * 작업내용
- * </p>
- *
- * @author Choi, Inho <inho.choi@softwareinlife.com>
- * @since 2021/07/30
- */
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -30,6 +22,15 @@ public class ItemService {
 
     public void saveItem(Item item) {
         itemRepository.save(item);
+    }
+
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQuantity);
+
     }
 
     public List<Item> findItems() {

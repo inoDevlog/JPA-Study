@@ -13,15 +13,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <b>클래스 제목(작업목적)</b>
- * <p>
- * 작업내용
- * </p>
- *
- * @author Choi, Inho <inho.choi@softwareinlife.com>
- * @since 2021/07/16
- */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
@@ -60,6 +51,5 @@ public class Item {
         }
         this.stockQuantity = restStock;
     }
-
 
 }
