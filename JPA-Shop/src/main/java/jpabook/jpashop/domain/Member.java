@@ -12,21 +12,12 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <b>클래스 제목(작업목적)</b>
- * <p>
- * 작업내용
- * </p>
- *
- * @author Choi, Inho <inho.choi@softwareinlife.com>
- * @since 2021/07/16
- */
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 public class Member {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "member_id")
     private Long id;
 
