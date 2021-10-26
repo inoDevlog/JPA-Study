@@ -3,4 +3,5 @@ include 'jpa-ex1'
 include 'jpashop'
 include 'jpashop'
 include 'JPA-Shop'
+include 'data-jpa'
 

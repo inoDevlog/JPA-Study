@@ -6,9 +6,9 @@ package jpabook.jpashop.repository;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jpabook.jpashop.domain.*;
+import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
-import lombok.RequiredArgsConstructor;
+import jpabook.jpashop.domain.OrderStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -18,8 +18,6 @@ import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jpabook.jpashop.domain.QMember.member;
-import static jpabook.jpashop.domain.QOrder.order;
 
 @Repository
 public class OrderRepository {
